@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>GRIP — Climatizzazione, pompe di calore e bagno per professionisti</title>
+  <meta name="description" content="GRIP S.R.L.: climatizzatori e pompe di calore HTW e Giatsu in esclusiva per l'Italia, bagno e riscaldamento di design Ercos. Per installatori, rivenditori e progettisti.">
+  <meta name="theme-color" content="#0E1620">
+  <link rel="icon" href="assets/marchi/grip-consulting-emblema.png">
+  <link rel="preload" href="assets/font/archivo-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/font/instrument-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="vendor/lenis/lenis.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/sezioni.css">
+  <script type="importmap">
+    { "imports": { "three": "./vendor/three/three.module.min.js", "three/addons/": "./vendor/three/addons/" } }
+  </script>
+</head>
+<body class="pagina-home">
+  <a class="salta" href="#contenuto" data-t="nav.salta"></a>
+
+  <!-- Loader: le alette dello scambiatore che si disegnano -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <svg viewBox="0 0 240 120" class="loader-alette">
+      <g class="la-rame"><path d="M8 34H232"/><path d="M8 60H232"/><path d="M8 86H232"/></g>
+      <g class="la-lamelle" id="la-lamelle"></g>
+    </svg>
+    <p class="mono">GRIP</p>
+  </div>
+
+  <!-- Il palco 3D (un solo canvas per tutto il sito) e il filo disegnato sulla pagina -->
+  <canvas id="palco" aria-hidden="true"></canvas>
+  <svg id="filo" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="filo-colore" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="800">
+        <stop offset="0" id="filo-c0" stop-color="#8FD3FF"/><stop offset="1" id="filo-c1" stop-color="#8FD3FF"/>
+      </linearGradient>
+      <linearGradient id="filo-sfuma" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="800">
+        <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.06" stop-color="#fff"/>
+        <stop offset="0.7" id="filo-m0" stop-color="#fff"/><stop offset="0.86" id="filo-m1" stop-color="#fff" stop-opacity="0"/>
+      </linearGradient>
+      <mask id="filo-maschera" maskUnits="userSpaceOnUse" x="0" y="0" width="4000" height="4000"><rect id="filo-rett" width="4000" height="4000" fill="url(#filo-sfuma)"/></mask>
+    </defs>
+    <g mask="url(#filo-maschera)">
+      <path id="filo-alone" fill="none" stroke="url(#filo-colore)" stroke-width="9" stroke-linecap="round" opacity="0.16"/>
+      <path id="filo-linea" fill="none" stroke="url(#filo-colore)" stroke-width="1.6" stroke-linecap="round"/>
+      <g id="filo-punti"></g>
+    </g>
+  </svg>
+
+  <header class="barra" id="barra">
+    <a class="barra-logo targhetta" href="#top" aria-label="GRIP Consulting, torna all'inizio">
+      <img src="assets/marchi/grip-consulting.png" alt="GRIP Consulting" width="480" height="197">
+    </a>
+    <nav class="barra-nav" id="menu" aria-label="Sezioni">
+      <a href="#aria" data-t="nav.aria"></a>
+      <a href="#bagno" data-t="nav.bagno"></a>
+      <a href="#impianto" data-t="nav.impianto"></a>
+      <a href="#lavoro" data-t="nav.lavoro"></a>
+      <a href="catalogo.html" data-t="nav.catalogo"></a>
+    </nav>
+    <a class="bottone bottone-giallo magnete barra-cta" href="#contatti" data-richiesta="listino"><span data-t="nav.cta"></span></a>
+    <button class="barra-menu" id="apri-menu" aria-expanded="false" aria-controls="menu"><span data-t="nav.menu"></span></button>
+  </header>
+
+  <main id="contenuto">
+    <!-- ============================== HERO ============================== -->
+    <section class="sez tema-notte pin pin-hero" id="top" data-scena="macchina" data-pin style="--pin: 260vh">
+      <div class="fisso hero">
+        <div class="hero-velo" aria-hidden="true"></div>
+        <div class="hero-marchi" data-fase="-1,0.14">
+          <span class="mono" data-t="hero.esclusiva"></span>
+          <span class="targhetta"><img src="assets/marchi/htw.png" alt="HTW" width="372" height="147"></span>
+          <span class="targhetta"><img src="assets/marchi/giatsu.png" alt="Giatsu" width="812" height="268"></span>
+        </div>
+        <div class="hero-testo" data-fase="-1,0.14">
+          <h1 class="titolo-hero"><span data-rivela data-t="hero.titolo"></span><span class="serif hero-sotto" data-rivela data-t="hero.sotto"></span></h1>
+          <p class="hero-riga" data-t="hero.riga"></p>
+          <div class="hero-azioni">
+            <a class="bottone bottone-giallo magnete" href="#contatti" data-richiesta="listino"><span data-t="hero.cta"></span></a>
+            <a class="collegamento" href="catalogo.html" data-t="hero.cta2"></a>
+          </div>
+        </div>
+        <p class="mono hero-macro" data-fase="-1,0.12"><i class="crocino"></i><span data-t="hero.macro"></span></p>
+        <div class="hero-brina" data-fase="0.52,2">
+          <p class="mono" data-t="hero.etichetta"></p>
+          <p class="testo-grande" data-t="hero.brina"></p>
+        </div>
+        <p class="mono hero-modello" data-t="hero.modello"></p>
+        <p class="mono hero-scorri" data-fase="-1,0.06"><span data-t="hero.scorri"></span><i></i></p>
+        <span data-filo style="right: 6%; bottom: 14%"></span>
+        <span data-filo="fine" style="right: 16%; bottom: -2%"></span>
+        <img class="statica" alt="" data-snap="hero.webp">
+      </div>
+    </section>
+
+    <!-- ===================== 01 — DENTRO LA MACCHINA ===================== -->
+    <section class="sez tema-notte pin" id="dentro" data-scena="macchina" data-pin style="--pin: 420vh">
+      <div class="fisso dentro">
+        <div class="dentro-testo" data-fase="-1,0.34">
+          <p class="numero">01</p>
+          <p class="mono occhiello" data-t="dentro.occhiello"></p>
+          <h2 class="titolo" data-rivela data-t="dentro.titolo"></h2>
+          <p class="testo" data-t="dentro.testo"></p>
+        </div>
+        <div class="quote" aria-hidden="true">
+          <p class="quota" data-ancora="mantello"><i></i><span data-t="dentro.etichette.mantello"></span></p>
+          <p class="quota" data-ancora="ventola"><i></i><span data-t="dentro.etichette.ventola"></span></p>
+          <p class="quota quota-sx" data-ancora="scambiatore"><i></i><span data-t="dentro.etichette.scambiatore"></span></p>
+          <p class="quota" data-ancora="compressore"><i></i><span data-t="dentro.etichette.compressore"></span></p>
+          <p class="quota" data-ancora="quadro"><i></i><span data-t="dentro.etichette.quadro"></span></p>
+          <p class="quota quota-sx" data-ancora="basamento"><i></i><span data-t="dentro.etichette.basamento"></span></p>
+        </div>
+        <div class="dentro-fatto" data-fase="0.56,0.84">
+          <p class="mono"><i class="crocino"></i><span data-t="dentro.etichette.compressore"></span></p>
+          <p class="titolo-fatto" data-t="dentro.fatto"></p>
+          <p class="testo" data-t="dentro.fattoSotto"></p>
+        </div>
+        <p class="mono dentro-nota" data-t="dentro.nota"></p>
+        <img class="statica" alt="" data-snap="dentro.webp">
+      </div>
+    </section>
+
+    <!-- ========================= 02 — L'ARIA ========================= -->
+    <section class="sez tema-notte pin pin-aria" id="aria" data-scena="vetrina" data-pin style="--pin: 900vh">
+      <div class="fisso aria">
+        <header class="aria-testa">
+          <div>
+            <p class="numero">02</p>
+            <p class="mono occhiello" data-t="aria.occhiello"></p>
+            <h2 class="titolo" data-rivela data-t="aria.titolo"></h2>
+          </div>
+          <div class="aria-comandi">
+            <p class="testo" data-t="aria.testo"></p>
+            <div class="interruttore" role="group" data-t-attr="aria-label:aria.interruttore" id="marchio-vetrina">
+              <button type="button" class="targhetta" data-marchio="htw" aria-pressed="true"><img src="assets/marchi/htw.png" alt="HTW" width="372" height="147"></button>
+              <button type="button" class="targhetta" data-marchio="giatsu" aria-pressed="false"><img src="assets/marchi/giatsu.png" alt="Giatsu" width="812" height="268"></button>
+            </div>
+          </div>
+        </header>
+        <div class="aria-pista" id="aria-pista" tabindex="0" aria-label="Vetrina dei tipi di prodotto"></div>
+        <div class="aria-linea" aria-hidden="true"><i id="aria-avanzamento"></i></div>
+      </div>
+    </section>
+
+    <!-- ========================= 03 — IL BAGNO ========================= -->
+    <section class="sez tema-carta" id="bagno">
+      <div class="bagno-apertura">
+        <span data-filo style="left: 12%; top: 4%"></span>
+        <span data-filo style="left: 46%; top: 44%"></span>
+        <span data-filo="fine" style="left: 70%; top: 100%"></span>
+        <p class="numero">03</p>
+        <p class="mono occhiello"><span data-t="bagno.occhiello"></span> · <span data-t="bagno.marchio"></span></p>
+        <h2 class="titolo-serif" data-rivela data-t="bagno.titolo"></h2>
+        <div class="bagno-intro">
+          <p class="testo" data-t="bagno.testo"></p>
+          <p class="serif bagno-motto"><span data-t="bagno.motto"></span><span class="mono"> — Ercos</span></p>
+          <p class="mono segnaposto" data-t="bagno.logo"></p>
+        </div>
+      </div>
+      <div class="pin pin-bagno" data-scena="ercos" data-pin style="--pin: 420vh">
+        <div class="fisso bagno">
+          <article class="primo-piano pp-1" data-fase="0.03,0.3"><p class="mono" data-pp="0"></p><h3 class="titolo-serif-m" data-pp-t="0"></h3><p class="testo" data-pp-s="0"></p></article>
+          <article class="primo-piano pp-2" data-fase="0.37,0.63"><p class="mono" data-pp="1"></p><h3 class="titolo-serif-m" data-pp-t="1"></h3><p class="testo" data-pp-s="1"></p></article>
+          <article class="primo-piano pp-3" data-fase="0.7,2"><p class="mono" data-pp="2"></p><h3 class="titolo-serif-m" data-pp-t="2"></h3><p class="testo" data-pp-s="2"></p>
+            <div class="finiture" id="finiture" role="group" data-t-attr="aria-label:bagno.finiture"></div>
+            <p class="mono nota" data-t="bagno.notaFiniture"></p>
+          </article>
+          <img class="statica" alt="" data-snap="bagno.webp">
+        </div>
+      </div>
+      <div class="bagno-famiglie">
+        <h3 class="mono occhiello" data-t="bagno.famiglie"></h3>
+        <div class="famiglie" id="famiglie"></div>
+        <p class="mono nota" data-t="bagno.notaFamiglie"></p>
+        <a class="collegamento" href="#contatti" data-richiesta="listino" data-prodotto="Ercos" data-t="bagno.cta"></a>
+        <span data-filo style="left: 88%; top: 10%"></span>
+        <span data-filo="fine" style="left: 80%; top: 104%"></span>
+      </div>
+    </section>
+
+    <!-- ======================== 04 — L'IMPIANTO ======================== -->
+    <section class="sez tema-notte pin" id="impianto" data-scena="montaggio" data-pin style="--pin: 400vh">
+      <div class="fisso impianto">
+        <div class="impianto-testa" data-fase="-1,0.1">
+          <p class="numero">04</p>
+          <p class="mono occhiello" data-t="impianto.occhiello"></p>
+          <h2 class="titolo" data-rivela data-t="impianto.titolo"></h2>
+          <p class="testo" data-t="impianto.testo"></p>
+        </div>
+        <ol class="impianto-passi mono" id="impianto-passi" aria-label="I pezzi dell'impianto"></ol>
+        <div class="impianto-comandi">
+          <div class="interruttore interruttore-testo" role="group" data-t-attr="aria-label:impianto.modo" id="stagione">
+            <button type="button" data-modo="caldo" aria-pressed="true" data-t="impianto.caldo"></button>
+            <button type="button" data-modo="freddo" aria-pressed="false" data-t="impianto.freddo"></button>
+          </div>
+          <p class="mono legenda"><i class="l-rame"></i><span data-t="impianto.rame"></span><i class="l-acqua"></i><span data-t="impianto.acqua"></span></p>
+        </div>
+        <div class="impianto-finale" data-fase="0.8,2">
+          <p class="titolo-finale" data-t="impianto.finale"></p>
+          <p class="mono" data-t="impianto.aiuto"></p>
+        </div>
+        <p class="mono impianto-nota" data-t="impianto.nota"></p>
+        <div class="impianto-presa" id="impianto-presa" aria-hidden="true"></div>
+        <img class="statica" alt="" data-snap="impianto.webp">
+      </div>
+    </section>
+
+    <!-- ====================== 05 — COME SI LAVORA ====================== -->
+    <section class="sez tema-notte piena lavoro" id="lavoro">
+      <div class="lavoro-testa">
+        <p class="numero">05</p>
+        <p class="mono occhiello" data-t="lavoro.occhiello"></p>
+        <h2 class="titolo" data-rivela data-t="lavoro.titolo"></h2>
+      </div>
+      <ol class="tempi" id="tempi"></ol>
+    </section>
+
+    <!-- ====================== 06 — PER CHI LAVORIAMO ====================== -->
+    <section class="sez tema-carta piena perchi" id="perchi">
+      <p class="numero">06</p>
+      <p class="mono occhiello" data-t="perChi.occhiello"></p>
+      <h2 class="titolo" data-rivela data-t="perChi.titolo"></h2>
+      <ul class="chi" id="chi"></ul>
+      <span data-filo style="left: 96%; top: 2%"></span>
+      <span data-filo style="left: 93%; top: 50%"></span>
+      <span data-filo style="left: 62%; top: 99%"></span>
+    </section>
+
+    <!-- ============================ CONTATTI ============================ -->
+    <section class="sez tema-notte piena contatti" id="contatti">
+      <div class="contatti-sx">
+        <p class="mono occhiello" data-t="contatti.occhiello"></p>
+        <h2 class="titolo-contatti" data-rivela data-t="contatti.titolo"></h2>
+        <p class="testo" data-t="contatti.testo"></p>
+        <dl class="recapiti">
+          <div><dt class="mono" data-t="contatti.telefono"></dt><dd><a class="recapito" href="tel:+393342975121" data-az="telefono"></a></dd></div>
+          <div><dt class="mono" data-t="contatti.email"></dt><dd><a class="recapito" href="mailto:info@gripconsulting.it" data-az="email"></a></dd></div>
+          <div><dt class="mono" data-t="contatti.ufficio"></dt><dd><span data-az="ufficio"></span><br><em data-t="contatti.appuntamento"></em></dd></div>
+          <div><dt class="mono" data-t="contatti.sede"></dt><dd data-az="sedeLegale"></dd></div>
+        </dl>
+        <span data-filo style="left: 42%; top: 4%"></span>
+        <span data-filo style="left: -4%; top: 40%"></span>
+        <span data-filo style="left: 20%; top: 106%"></span>
+      </div>
+      <form class="modulo" id="modulo" novalidate>
+        <!-- TODO (da collegare): quando ci sarà un server o un servizio di invio, sostituire in js/modulo.js
+             la funzione `invia()` che oggi apre il programma di posta con un indirizzo mailto:. -->
+        <p class="mono prodotto-scelto" id="prodotto-scelto" hidden></p>
+        <div class="campo"><label for="m-nome" data-t="contatti.modulo.nome"></label><input id="m-nome" name="nome" autocomplete="name" required></div>
+        <div class="campo"><label for="m-azienda" data-t="contatti.modulo.azienda"></label><input id="m-azienda" name="azienda" autocomplete="organization" required></div>
+        <div class="campo"><label for="m-email" data-t="contatti.modulo.email"></label><input id="m-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="campo"><label for="m-telefono" data-t="contatti.modulo.telefono"></label><input id="m-telefono" name="telefono" type="tel" autocomplete="tel"></div>
+        <div class="campo"><label for="m-ruolo" data-t="contatti.modulo.ruolo"></label><select id="m-ruolo" name="ruolo" required></select></div>
+        <div class="campo"><label for="m-provincia" data-t="contatti.modulo.provincia"></label><input id="m-provincia" name="provincia" autocomplete="address-level2" required></div>
+        <fieldset class="campo campo-largo"><legend data-t="contatti.modulo.tipo"></legend><div class="scelte" id="m-tipi"></div></fieldset>
+        <div class="campo campo-largo"><label for="m-messaggio" data-t="contatti.modulo.messaggio"></label><textarea id="m-messaggio" name="messaggio" rows="4"></textarea></div>
+        <label class="consenso campo-largo"><input type="checkbox" name="privacy" required><span data-t="contatti.modulo.privacy"></span></label>
+        <div class="campo-largo modulo-fine">
+          <button class="bottone bottone-giallo magnete" type="submit"><span data-t="contatti.modulo.invia"></span></button>
+          <p class="mono nota" data-t="contatti.modulo.nota"></p>
+          <p class="esito" id="m-esito" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <!-- ============================= FOOTER ============================= -->
+  <footer class="sez tema-notte piede" id="piede">
+    <div class="piede-anello" data-filo-anello>
+      <img src="assets/marchi/grip-consulting-emblema.png" alt="GRIP Consulting" width="480" height="360" loading="lazy">
+    </div>
+    <div class="piede-testo">
+      <p class="mono" data-t="footer.dal"></p>
+      <p data-t="footer.dati"></p>
+      <p data-t="footer.marchi"></p>
+      <p data-t="footer.modelli"></p>
+      <p class="piede-marchi">
+        <span class="targhetta"><img src="assets/marchi/htw.png" alt="HTW" width="372" height="147" loading="lazy"></span>
+        <span class="targhetta"><img src="assets/marchi/giatsu.png" alt="Giatsu" width="812" height="268" loading="lazy"></span>
+      </p>
+      <p class="piede-link"><a class="collegamento" href="privacy.html" data-t="footer.privacy"></a><a class="collegamento" href="cookie.html" data-t="footer.cookie"></a><a class="collegamento" href="catalogo.html" data-t="nav.catalogo"></a></p>
+    </div>
+    
+  </footer>
+
+  <div class="cursore" id="cursore" aria-hidden="true"></div>
+
+  <script src="vendor/gsap/gsap.min.js"></script>
+  <script src="vendor/gsap/ScrollTrigger.min.js"></script>
+  <script src="vendor/lenis/lenis.min.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

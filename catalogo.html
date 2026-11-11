@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Catalogo HTW e Giatsu — GRIP</title>
+  <meta name="description" content="Catalogo GRIP: climatizzatori, pompe di calore, scaldabagni, ventilatori e deumidificatori HTW e Giatsu, in esclusiva per l'Italia. Prezzi su preventivo.">
+  <meta name="theme-color" content="#0E1620">
+  <link rel="icon" href="assets/marchi/grip-consulting-emblema.png">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/catalogo.css">
+</head>
+<body class="pagina-catalogo">
+  <a class="salta" href="#elenco" data-t="nav.salta"></a>
+  <header class="barra scesa" id="barra">
+    <a class="barra-logo targhetta" href="index.html" aria-label="GRIP Consulting, torna alla pagina principale">
+      <img src="assets/marchi/grip-consulting.png" alt="GRIP Consulting" width="480" height="197">
+    </a>
+    <nav class="barra-nav" id="menu" aria-label="Sezioni">
+      <a href="index.html#aria" data-t="nav.aria"></a>
+      <a href="index.html#bagno" data-t="nav.bagno"></a>
+      <a href="index.html#impianto" data-t="nav.impianto"></a>
+      <a href="index.html#lavoro" data-t="nav.lavoro"></a>
+      <a href="catalogo.html" aria-current="page" data-t="nav.catalogo"></a>
+    </nav>
+    <a class="bottone bottone-giallo barra-cta" href="index.html?richiesta=listino#contatti"><span data-t="nav.cta"></span></a>
+    <button class="barra-menu" id="apri-menu" aria-expanded="false" aria-controls="menu"><span data-t="nav.menu"></span></button>
+  </header>
+
+  <main class="cat">
+    <section class="cat-testa">
+      <p class="mono occhiello">HTW · Giatsu · <span data-t="hero.esclusiva"></span></p>
+      <h1 class="cat-titolo" data-t="catalogo.titolo"></h1>
+      <p class="testo" data-t="catalogo.testo"></p>
+    </section>
+
+    <form class="filtri" id="filtri" role="search" onsubmit="return false">
+      <div class="filtro">
+        <span class="mono" data-t="catalogo.marchio"></span>
+        <div class="interruttore" id="f-marchio" role="group" data-t-attr="aria-label:catalogo.marchio">
+          <button type="button" class="f-tutti" data-marchio="" aria-pressed="true" data-t="catalogo.tutti"></button>
+          <button type="button" class="targhetta" data-marchio="htw" aria-pressed="false"><img src="assets/marchi/htw.png" alt="HTW" width="372" height="147"></button>
+          <button type="button" class="targhetta" data-marchio="giatsu" aria-pressed="false"><img src="assets/marchi/giatsu.png" alt="Giatsu" width="812" height="268"></button>
+        </div>
+      </div>
+      <div class="filtro filtro-tipi">
+        <span class="mono" data-t="catalogo.tipo"></span>
+        <div class="chips" id="f-tipo" role="group" data-t-attr="aria-label:catalogo.tipo"></div>
+      </div>
+      <div class="filtro">
+        <label class="mono" for="f-cerca" data-t="catalogo.cerca"></label>
+        <input id="f-cerca" type="search" autocomplete="off" spellcheck="false">
+      </div>
+      <p class="mono filtri-conta" id="f-conta" aria-live="polite"></p>
+    </form>
+
+    <div id="elenco" class="elenco"></div>
+    <p class="vuoto" id="f-vuoto" hidden><span data-t="catalogo.nessuno"></span> <button type="button" class="collegamento" id="f-azzera" data-t="catalogo.azzera"></button></p>
+
+    <section class="cat-ercos tema-carta" id="ercos">
+      <p class="mono occhiello">Ercos</p>
+      <h2 class="titolo-serif-m" data-t="catalogo.ercos"></h2>
+      <p class="mono nota" data-t="catalogo.ercosNota"></p>
+      <div class="ercos-famiglie" id="ercos-famiglie"></div>
+    </section>
+  </main>
+
+  <footer class="cat-piede">
+    <p data-t="footer.dati"></p>
+    <p data-t="footer.marchi"></p>
+    <p data-t="footer.modelli"></p>
+    <p class="piede-link"><a class="collegamento" href="index.html">GRIP</a><a class="collegamento" href="privacy.html" data-t="footer.privacy"></a><a class="collegamento" href="cookie.html" data-t="footer.cookie"></a></p>
+  </footer>
+
+  <script type="module" src="js/catalogo.js"></script>
+</body>
+</html>
